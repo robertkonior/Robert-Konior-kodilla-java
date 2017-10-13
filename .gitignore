@@ -15,7 +15,7 @@
 *.iws
 *.iml
 *.ipr
-/kodilla-testing/out
+out/
 ### NetBeans ###
 nbproject/private/
 build/
