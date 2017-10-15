@@ -22,6 +22,7 @@ public class CollectionTestSuite {
     }
     @Test
     public void testOddNumbersExterminatorEmptyList(){
+        System.out.println("Testing empty list");
         OddNumbersExterminator emptyList = new OddNumbersExterminator();
         List<Integer> testList = new ArrayList<>();
         List result = emptyList.exterminate((ArrayList<Integer>) testList);
@@ -39,6 +40,7 @@ public class CollectionTestSuite {
         }
 
         List result = evenList.exterminate((ArrayList<Integer>) randomNumbers);
+        System.out.println("Testing list with " + result.size() + " elements");
 
         for (int n:evenList.exterminate((ArrayList<Integer>) randomNumbers)) {
             Assert.assertTrue(n % 2 == 0) ;
