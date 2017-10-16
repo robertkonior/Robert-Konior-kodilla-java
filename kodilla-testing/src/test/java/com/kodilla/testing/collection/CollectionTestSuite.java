@@ -4,9 +4,11 @@ import org.junit.*;
 import java.util.*;
 
 public class CollectionTestSuite {
+    OddNumbersExterminator elementList;
 
     @Before
     public void before(){
+        elementList = new OddNumbersExterminator();
         System.out.println("Test Case: begin");
     }
 
@@ -28,24 +30,20 @@ public class CollectionTestSuite {
     @Test
     public void testOddNumbersExterminatorEmptyList(){
         System.out.println("Testing empty list");
-        OddNumbersExterminator emptyList = new OddNumbersExterminator();
         List<Integer> testList = new ArrayList<>();
-        List<Integer> result = emptyList.exterminate((ArrayList<Integer>) testList);
+        List<Integer> result = elementList.exterminate(testList);
         int resultSize = result.size();
         Assert.assertEquals(0, resultSize);
     }
 
     @Test
     public void testOddNumbersExterminatorNormalList(){
-        OddNumbersExterminator evenList = new OddNumbersExterminator();
         Random generator = new Random();
         List<Integer> randomNumbers = new ArrayList<>();
-
         for(int n = 0; n < 10 ;n++) {
             randomNumbers.add(generator.nextInt(10));
         }
-
-        List<Integer> result = evenList.exterminate((ArrayList<Integer>) randomNumbers);
+        List<Integer> result = elementList.exterminate(randomNumbers);
         System.out.println("Testing list with " + result.size() + " elements");
 
         for (Integer n:result) {
