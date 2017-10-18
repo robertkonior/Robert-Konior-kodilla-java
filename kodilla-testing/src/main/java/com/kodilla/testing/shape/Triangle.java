@@ -1,15 +1,22 @@
 package com.kodilla.testing.shape;
 
 public class Triangle implements Shape {
-    @Override
+    private double a;
+    private double b;
+
+    public Triangle(double a, double b) {
+        this.a = a;
+        this.b = b;
+    }
+
     public String getShapeName() {
-
-        return null;
+        return "Triangle";
     }
 
-    @Override
     public Double getField() {
-
-        return null;
+        return a*b;
     }
+
+
+
 }
