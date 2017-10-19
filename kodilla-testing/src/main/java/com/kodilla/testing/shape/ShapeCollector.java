@@ -12,10 +12,12 @@ public class ShapeCollector {
     }
 
     public Shape getFigure(int n){
-        private Shape figure ;
-        figure = figureList.get(n);
-        return figure;
+        if (n>=0 && n < figureList.size()) {
+            return figureList.get(n);
+        }else
+            return null;
     }
+
     public int getFigureListSize(){
         return  figureList.size();
     }

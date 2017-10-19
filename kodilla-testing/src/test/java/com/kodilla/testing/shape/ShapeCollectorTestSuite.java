@@ -29,11 +29,11 @@ public class ShapeCollectorTestSuite {
     public void testAddFigureToList(){
         // given
         Shape circle0 = new Circle(2);
-        // when
         int before = testFigure.getFigureListSize();
+        // when
         testFigure.addFigure(circle0);
-        int after = testFigure.getFigureListSize();
         // then
+        int after = testFigure.getFigureListSize();
         Assert.assertTrue(after > before);
     }
 
@@ -45,6 +45,16 @@ public class ShapeCollectorTestSuite {
         testFigure.addFigure(circle0);
         // then
         Assert.assertEquals(circle0 , testFigure.getFigure(0));
+    }
+
+    @Test
+    public void testGetFigureByBadIndex(){
+        //given
+        Shape circle0 = new Circle(2);
+        // when
+        testFigure.addFigure(circle0);
+        //then
+        Assert.assertNull(testFigure.getFigure(-1));
     }
 
     @Test
@@ -61,12 +71,12 @@ public class ShapeCollectorTestSuite {
     public void testRemoveFigure(){
         // given
         Shape circle0 = new Circle(2);
-        // when
         testFigure.addFigure(circle0);
         int before = testFigure.getFigureListSize();
+        //when
         boolean result = testFigure.removeFigure(circle0);
-        int after = testFigure.getFigureListSize();
         // then
+        int after = testFigure.getFigureListSize();
         Assert.assertTrue(result && before > after);
     }
 
