@@ -57,6 +57,11 @@ public class ShapeCollectorTestSuite {
         int after = testFigure.getFigureListSize();
         Assert.assertTrue(result && before > after);
     }
-
+    @Test
+    public void testFields(){
+        Shape triangle0 = new Triangle(2.0,5.0);
+        double result = triangle0.getField();
+        Assert.assertEquals(10.0, result,0);
+    }
 
 }
