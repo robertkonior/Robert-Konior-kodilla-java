@@ -1,6 +1,5 @@
 package com.kodilla.testing.shape;
-import com.kodilla.testing.shape.ShapeCollector;
-import com.kodilla.testing.shape.Shape;
+
 import org.junit.*;
 
 public class ShapeCollectorTestSuite {
