@@ -18,6 +18,7 @@ public class BookDirectoryTestSuite {
     LibraryDatabase libraryDatabaseMock;
     BookLibrary bookLibrary;
 
+    @Ignore
     @Test
     public void testListBooksWithConditionsReturnList() {
         // Given
@@ -52,7 +53,6 @@ public class BookDirectoryTestSuite {
     }
 
     @Ignore
-
     @Test
     public void testListBooksWithConditionMoreThan20() {
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
