@@ -15,7 +15,7 @@ public class StreamMain {
 
         Map<Integer, ForumUser> theResultMapOfUsers = forum.getUserList().stream()
                 .filter(a -> a.getSex() == 'M')
-                .filter(a -> Period.between(a.getBirthDate(), LocalDate.now()).getYears() > 10)
+                .filter(a -> Period.between(a.getBirthDate(), LocalDate.now()).getYears() > 20)
                 .filter(a -> a.getPostQuantity() >= 1)
                 .collect(Collectors.toMap(ForumUser::getIdUser, a -> a));
 
