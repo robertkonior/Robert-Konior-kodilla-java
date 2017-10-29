@@ -1,8 +1,6 @@
 package com.kodilla.stream.forumuser;
 
 import java.time.LocalDate;
-import java.time.Period;
-import java.time.Year;
 
 public final class ForumUser {
     private final int idUser;
