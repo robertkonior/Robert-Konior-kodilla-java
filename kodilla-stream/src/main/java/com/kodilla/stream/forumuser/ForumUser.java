@@ -39,6 +39,15 @@ public final class ForumUser {
         return postQuantity;
     }
 
-
+    @Override
+    public String toString() {
+        return "ForumUser{" +
+                "idUser=" + idUser +
+                ", userName='" + userName + '\'' +
+                ", sex=" + sex +
+                ", birthDate=" + birthDate +
+                ", postQuantity=" + postQuantity +
+                '}';
+    }
 }
 
