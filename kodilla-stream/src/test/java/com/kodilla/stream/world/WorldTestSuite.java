@@ -38,8 +38,8 @@ public class WorldTestSuite {
         BigDecimal poepleQuantity = world.getPeopleQuantity();
 
         //Then
-        BigDecimal expectetpoepleQuantity = BigDecimal.valueOf(38476269 + 80594017 + 10674723 + 326625791 + 35623680);
-        Assert.assertEquals(expectetpoepleQuantity, poepleQuantity);
+        BigDecimal expectationalQuantity = BigDecimal.valueOf(38476269 + 80594017 + 10674723 + 326625791 + 35623680);
+        Assert.assertEquals(expectationalQuantity, poepleQuantity);
 
 
     }
