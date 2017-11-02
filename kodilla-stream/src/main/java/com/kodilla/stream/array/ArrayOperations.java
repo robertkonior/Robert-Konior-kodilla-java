@@ -8,8 +8,9 @@ public interface ArrayOperations {
         IntStream.range(0,numbers.length)
                 .forEach((i)->System.out.println( numbers[i]));
         return IntStream.range(0,numbers.length)
-                .mapToDouble((i)->i = numbers[i])
-                .average().getAsDouble();
+                .mapToDouble(i-> numbers[i])
+                .average()
+                .orElse(0);
     }
 
 }

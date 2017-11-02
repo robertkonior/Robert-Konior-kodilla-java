@@ -10,10 +10,8 @@ import static com.kodilla.stream.array.ArrayOperations.getAverage;
 
 public class ArrayOperationsTestSuite {
 
-    @Test
-    public void testGetAverage() {
-        //Given
-        int[] numbers = new int[20];
+    private double getExpectedAverage(int[] numbers) {
+
         Random generator = new Random();
 
         for (int i = 0; i < numbers.length; i++) {
@@ -24,10 +22,19 @@ public class ArrayOperationsTestSuite {
         for (int i = 0; i < numbers.length; i++) {
             n += numbers[i];
         }
+        return n / numbers.length;
+
+    }
+
+    @Test
+    public void testGetAverage() {
+        //Given
+        int[] numbers = new int[20];
 
         //When
+        double expectedAverage = getExpectedAverage(numbers);
         double testedAverage = getAverage(numbers);
-        double expectedAverage = n / numbers.length;
+
 
         //Then
         Assert.assertEquals(expectedAverage, testedAverage, 0);
