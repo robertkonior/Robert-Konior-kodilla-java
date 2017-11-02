@@ -26,6 +26,7 @@ public class WorldTestSuite {
         List<Country> americaCountrys = new ArrayList<>();
         americaCountrys.add(usa);
         americaCountrys.add(canada);
+        americaCountrys.add(czech);
         Continent america = new Continent("America", americaCountrys);
 
         List<Continent> continentList = new ArrayList<>();
