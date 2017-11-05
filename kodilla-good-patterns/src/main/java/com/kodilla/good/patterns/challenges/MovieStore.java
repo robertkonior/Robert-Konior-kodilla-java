@@ -1,9 +1,7 @@
 package com.kodilla.good.patterns.challenges;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 class MovieStore {
 
@@ -32,9 +30,11 @@ class MovieStore {
     public static void main(String[] args) {
         MovieStore movieStore = new MovieStore();
         String filmList = movieStore.getMovies().entrySet().stream()
-                .map(s -> s.getValue()).flatMap().
-                .forEach(System.out::println);
+                .flatMap(s -> s.getValue().stream())
+                .map(s->s.toString() )
+                .collect(Collectors.joining(" ! "," You should watch : "," . No more films on this list."));
 
+        System.out.println(filmList);
     }
 }
 
