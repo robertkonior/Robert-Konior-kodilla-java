@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.*;
 
-public class MovieStore {
+class MovieStore {
 
     public Map<String, List<String>> getMovies() {
 
@@ -32,8 +31,10 @@ public class MovieStore {
 
     public static void main(String[] args) {
         MovieStore movieStore = new MovieStore();
-        String showListFilm = movieStore.getMovies().entrySet().stream()
-                .flatMap(s->s.getValue() )
+        String filmList = movieStore.getMovies().entrySet().stream()
+                .map(s -> s.getValue()).flatMap().
+                .forEach(System.out::println);
 
     }
 }
+
