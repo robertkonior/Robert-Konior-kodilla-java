@@ -31,8 +31,8 @@ class MovieStore {
         MovieStore movieStore = new MovieStore();
         String filmList = movieStore.getMovies().entrySet().stream()
                 .flatMap(s -> s.getValue().stream())
-                .map(s->s.toString() )
-                .collect(Collectors.joining(" ! "," You should watch : "," . No more films on this list."));
+                .map(s -> s.toString())
+                .collect(Collectors.joining(" ! ", " You should watch : ", " . No more films on this list."));
 
         System.out.println(filmList);
     }

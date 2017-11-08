@@ -1,4 +1,4 @@
-group 'com.kodilla'
+ggitroup 'com.kodilla'
 version '0.0.1-SNAPSHOT'
 
 apply plugin: 'java'
