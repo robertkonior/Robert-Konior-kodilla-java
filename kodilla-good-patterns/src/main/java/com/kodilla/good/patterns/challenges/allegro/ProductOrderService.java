@@ -1,6 +1,7 @@
 package com.kodilla.good.patterns.challenges.allegro;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class ProductOrderService {
 
@@ -16,26 +17,23 @@ public class ProductOrderService {
         this.orderRepository = orderRepository;
     }
 
-    public OrderDto process(final Order order) {
-        int noOrder = order.getNoOrder() ;
-        LocalDate deliveryDay = order.getDeliveryDate();
+    public OrderDto process(final List<Order> orders) {
+        int noOrder = orders.get(0).getNoOrder();
+        LocalDate deliveryDay = orders.get(0).getDeliveryDate();
+        String productName = orders.get(0).getProduct().getProductName();
 
+        boolean isOrderInProgress = orderService.status(noOrder, deliveryDay, LocalDate.now());
 
-        boolean isOrderInProgress = orderService.status(noOrder,deliveryDay, LocalDate.now());
-        User buyer = order.getBuyer();
-        User seller =order.getSeller();
+        if (isOrderInProgress) {
+            informationService.sendMessageToBuyer(productName);
+            orderRepository.addOrderToExecute(noOrder);
 
-                if (isOrderInProgress) {
-                    informationService.sendMessageToBuyer();
-                    orderRepository.addOrderToExecute(noOrder);
+        } else {
+            informationService.sendMessageToSeller(productName);
+            orderRepository.saveInOrderHistory(noOrder);
 
-                    return new OrderDto(noOrder , true);
-
-                }else {
-                    informationService.sendMessageToSeller();
-                    orderRepository.saveInOrderHistory(noOrder);
-                    return new OrderDto(noOrder, false);
-                }
+        }
+        return new OrderDto(noOrder, isOrderInProgress);
     }
 
 

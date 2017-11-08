@@ -2,11 +2,11 @@ package com.kodilla.good.patterns.challenges.allegro;
 
 public class EmailService implements InformationService {
 
-    public void sendMessageToBuyer(){
-        System.out.println("Sending message to buyer");
+    public void sendMessageToBuyer(String productName){
+        System.out.println("Sending message to buyer about his " + productName);
     }
 
-    public void sendMessageToSeller(){
-        System.out.println("Sending message to seller ");
+    public void sendMessageToSeller(String productName){
+        System.out.println("Sending message to seller about his " + productName);
     }
 }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class TransactionLists implements OrderRepository {
+public class ListRepository implements OrderRepository {
 
 
     List<Integer> inProgressList = new LinkedList<>();
