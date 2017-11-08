@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.allegro;
 
 import java.time.LocalDate;
 
@@ -16,7 +16,7 @@ public class ProductOrderService {
         this.orderRepository = orderRepository;
     }
 
-    public OrderDto process( final Order order) {
+    public OrderDto process(final Order order) {
         int noOrder = order.getNoOrder() ;
         LocalDate deliveryDay = order.getDeliveryDate();
 

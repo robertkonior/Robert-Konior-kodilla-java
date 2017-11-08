@@ -1,4 +1,6 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.allegro;
+
+import com.kodilla.good.patterns.challenges.allegro.OrderRepository;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

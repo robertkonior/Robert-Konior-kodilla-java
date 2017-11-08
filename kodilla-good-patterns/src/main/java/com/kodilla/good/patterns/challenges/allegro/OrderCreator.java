@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.allegro;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -12,7 +12,7 @@ public class OrderCreator {
       Product product = new Product("boombox", 22.5 , "megabass");
       LocalDate deliveryDay = LocalDate.of(2017 , Month.NOVEMBER , 15);
 
-      return new Order(001,product,buyer,seller,2,deliveryDay);
+      return new Order(1,product,buyer,seller,2,deliveryDay);
 
   }
 
