@@ -15,4 +15,8 @@ public class Product {
     public String getProductName() {
         return productName;
     }
+
+    public double getProductPrince() {
+        return productPrince;
+    }
 }

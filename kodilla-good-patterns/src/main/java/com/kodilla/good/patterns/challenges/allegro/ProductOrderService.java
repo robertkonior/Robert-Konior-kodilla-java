@@ -21,8 +21,9 @@ public class ProductOrderService {
         int noOrder = orders.get(0).getNoOrder();
         LocalDate deliveryDay = orders.get(0).getDeliveryDate();
         String productName = orders.get(0).getProduct().getProductName();
+        double orderPrice =orders.get(0).getProduct().getProductPrince() * orders.get(0).getAmount();
 
-        boolean isOrderInProgress = orderService.status(noOrder, deliveryDay, LocalDate.now());
+        boolean isOrderInProgress = orderService.status(noOrder, deliveryDay , orderPrice);
 
         if (isOrderInProgress) {
             informationService.sendMessageToBuyer(productName);
