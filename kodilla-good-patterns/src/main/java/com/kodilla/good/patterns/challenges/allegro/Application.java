@@ -7,10 +7,14 @@ public class Application {
     public static void main(String[] args) {
 
         OrderCreator orderCreator = new OrderCreator();
-        List<Order> order = orderCreator.creator();
+        List<Order> orders = orderCreator.creator();
 
         ProductOrderService productOrderService = new ProductOrderService(new EmailService(),new SalesStatusService() , new ListRepository() );
-        productOrderService.process(order);
+        while(orders.size() >= 1 ){
+            Order executingOrder = orders.get(0);
+            productOrderService.process(executingOrder);
+            orders.remove(0);
+        }
 
     }
 }

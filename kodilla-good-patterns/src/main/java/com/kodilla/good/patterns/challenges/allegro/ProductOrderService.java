@@ -17,11 +17,11 @@ public class ProductOrderService {
         this.orderRepository = orderRepository;
     }
 
-    public OrderDto process(final List<Order> orders) {
-        int noOrder = orders.get(0).getNoOrder();
-        LocalDate deliveryDay = orders.get(0).getDeliveryDate();
-        String productName = orders.get(0).getProduct().getProductName();
-        double orderPrice =orders.get(0).getProduct().getProductPrince() * orders.get(0).getAmount();
+    public OrderDto process(final Order order) {
+        int noOrder = order.getNoOrder();
+        LocalDate deliveryDay = order.getDeliveryDate();
+        String productName = order.getProduct().getProductName();
+        double orderPrice =order.getProduct().getProductPrince() * order.getAmount();
 
         boolean isOrderInProgress = orderService.status(noOrder, deliveryDay , orderPrice);
 
