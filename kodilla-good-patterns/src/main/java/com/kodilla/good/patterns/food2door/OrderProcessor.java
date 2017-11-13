@@ -13,7 +13,7 @@ public class OrderProcessor {
 
         if(depotStatusInterface.getMapProductsInDepot().containsKey(product)){
             if(orderingProcessInterface.process(product,quantity)){
-
+                informationInterface.sendOrder(product,quantity);
 
                 System.out.println("Order created " );
 

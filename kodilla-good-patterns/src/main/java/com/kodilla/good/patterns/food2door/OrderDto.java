@@ -7,7 +7,10 @@ public class OrderDto {
     private boolean glutenFree ;
     private char ecoClassOfProduct;
 
-
-
+    public OrderDto(String productName, String productDeliver, Integer quantity) {
+        this.productName = productName;
+        this.productDeliver = productDeliver;
+        this.quantity = quantity;
+    }
 
 }
