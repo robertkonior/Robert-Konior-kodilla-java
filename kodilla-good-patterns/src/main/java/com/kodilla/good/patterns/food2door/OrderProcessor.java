@@ -12,13 +12,10 @@ public class OrderProcessor {
     public void executeTheOrderProcess(Product product,Integer quantity){
 
         if(depotStatusInterface.getMapProductsInDepot().containsKey(product)){
-            if(orderingProcessInterface.process(product,quantity)){
-                informationInterface.sendOrder(product,quantity);
-
-                System.out.println("Order created " );
-
-            }
-
+            orderingProcessInterface.process(product,quantity);
+            informationInterface.sendOrder(product,quantity);
+        }else {
+            System.out.println("We don't have this product");
         }
     }
 

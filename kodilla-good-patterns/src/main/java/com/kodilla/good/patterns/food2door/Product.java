@@ -64,4 +64,14 @@ public class Product {
         result = 31 * result + (int) ecoClassOfProduct;
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productName='" + productName + '\'' +
+                ", productPrice=" + productPrice +
+                ", glutenFree=" + glutenFree +
+                ", ecoClassOfProduct=" + ecoClassOfProduct +
+                '}';
+    }
 }
