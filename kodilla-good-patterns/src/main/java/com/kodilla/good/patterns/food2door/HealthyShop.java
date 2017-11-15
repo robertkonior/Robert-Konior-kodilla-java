@@ -9,8 +9,8 @@ public class HealthyShop implements OrderingProcessInterface,DepotStatusInterfac
 
     private Map<Product, Integer> healthFoodProducts = new HashMap<>();
 
-    public void addHealtyroductToDepot(String name, BigDecimal price, char ecoClassOfProduct, Integer quantity) {
-        healthFoodProducts.put(new Product(name, price, ecoClassOfProduct), quantity);
+    public void addHealtyroductToDepot(String name, BigDecimal price,  Integer quantity) {
+        healthFoodProducts.put(new Product(name, price), quantity);
     }
     @Override
     public Map<Product, Integer> getMapProductsInDepot() {

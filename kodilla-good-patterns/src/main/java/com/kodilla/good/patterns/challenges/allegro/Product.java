@@ -19,4 +19,5 @@ public class Product {
     public double getProductPrince() {
         return productPrince;
     }
+
 }

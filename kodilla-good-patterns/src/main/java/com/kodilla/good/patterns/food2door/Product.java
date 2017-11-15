@@ -6,25 +6,25 @@ public class Product {
 
     private String productName;
     private BigDecimal productPrice;
-    private boolean glutenFree ;
-    private char ecoClassOfProduct;
+//    private boolean glutenFree ;
+//    private char ecoClassOfProduct;
 
     public Product(String productName, BigDecimal productPrice) {
         this.productName = productName;
         this.productPrice = productPrice;
     }
 
-    public Product(String productName, BigDecimal productPrice, boolean glutenFree) {
-        this.productName = productName;
-        this.productPrice = productPrice;
-        this.glutenFree = glutenFree;
-    }
-
-    public Product(String productName, BigDecimal productPrice, char ecoClassOfProduct) {
-        this.productName = productName;
-        this.productPrice = productPrice;
-        this.ecoClassOfProduct = ecoClassOfProduct;
-    }
+//    public Product(String productName, BigDecimal productPrice, boolean glutenFree) {
+//        this.productName = productName;
+//        this.productPrice = productPrice;
+//        this.glutenFree = glutenFree;
+//    }
+//
+//    public Product(String productName, BigDecimal productPrice, char ecoClassOfProduct) {
+//        this.productName = productName;
+//        this.productPrice = productPrice;
+//        this.ecoClassOfProduct = ecoClassOfProduct;
+//    }
 
     public String getProductName() {
         return productName;
@@ -34,35 +34,24 @@ public class Product {
         return productPrice;
     }
 
-    public boolean isGlutenFree() {
-        return glutenFree;
-    }
-
-    public char getEcoClassOfProduct() {
-        return ecoClassOfProduct;
-    }
+//    public boolean isGlutenFree() {
+//        return glutenFree;
+//    }
+//
+//    public char getEcoClassOfProduct() {
+//        return ecoClassOfProduct;
+//    }
 
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Product)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         Product product = (Product) o;
 
-        if (glutenFree != product.glutenFree) return false;
-        if (ecoClassOfProduct != product.ecoClassOfProduct) return false;
-        if (!productName.equals(product.productName)) return false;
-        return productPrice.equals(product.productPrice);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = productName.hashCode();
-        result = 31 * result + productPrice.hashCode();
-        result = 31 * result + (glutenFree ? 1 : 0);
-        result = 31 * result + (int) ecoClassOfProduct;
-        return result;
+        if (productName != null ? !productName.equals(product.productName) : product.productName != null) return false;
+        return productPrice != null ? productPrice.equals(product.productPrice) : product.productPrice == null;
     }
 
     @Override
@@ -70,8 +59,6 @@ public class Product {
         return "Product{" +
                 "productName='" + productName + '\'' +
                 ", productPrice=" + productPrice +
-                ", glutenFree=" + glutenFree +
-                ", ecoClassOfProduct=" + ecoClassOfProduct +
                 '}';
     }
 }

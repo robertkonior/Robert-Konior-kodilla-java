@@ -9,8 +9,8 @@ public class ExtraFoodShop implements OrderingProcessInterface,DepotStatusInterf
 
     private Map<Product, Integer> extraFoodProducts = new HashMap<>();
 
-    public void addExtraProductToDepot(String name, BigDecimal price, Integer quantity) {
-        extraFoodProducts.put(new Product(name, price), quantity);
+    public void addExtraProductToDepot(Product product, Integer quantity) {
+        extraFoodProducts.put(product, quantity);
     }
     @Override
     public Map<Product, Integer> getMapProductsInDepot() {
