@@ -50,18 +50,14 @@ public class Product {
 
         Product product = (Product) o;
 
-        if (glutenFree != product.glutenFree) return false;
-        if (ecoClassOfProduct != product.ecoClassOfProduct) return false;
-        if (!productName.equals(product.productName)) return false;
-        return productPrice.equals(product.productPrice);
+        if (productName != null ? !productName.equals(product.productName) : product.productName != null) return false;
+        return productPrice != null ? productPrice.equals(product.productPrice) : product.productPrice == null;
     }
 
     @Override
     public int hashCode() {
-        int result = productName.hashCode();
-        result = 31 * result + productPrice.hashCode();
-        result = 31 * result + (glutenFree ? 1 : 0);
-        result = 31 * result + (int) ecoClassOfProduct;
+        int result = productName != null ? productName.hashCode() : 0;
+        result = 31 * result + (productPrice != null ? productPrice.hashCode() : 0);
         return result;
     }
 

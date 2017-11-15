@@ -6,11 +6,19 @@ import java.util.Map;
 
 public class GlutenFreeShop implements OrderingProcessInterface,DepotStatusInterface,InformationInterface {
 
-    private Map<Product, Integer> glutenFreeProducts = new HashMap<>();
 
-    public void addGlutenFreeProducts(String name, BigDecimal price, boolean containsGluten, Integer quantity) {
-        glutenFreeProducts.put(new Product(name, price, containsGluten), quantity);
+
+    private Map<Product, Integer> createProductMap(){
+        Map<Product, Integer> glutenFreeProducts = new HashMap<>();
+        glutenFreeProducts.put(new Product("chemical-bread",BigDecimal.valueOf(10.0),true),5);
+        glutenFreeProducts.put(new Product("crossaint",BigDecimal.valueOf(15.0),false),5);
+        glutenFreeProducts.put(new Product("tost",BigDecimal.valueOf(10.0),true),5);
+
+        return glutenFreeProducts;
+
     }
+
+    private Map<Product, Integer> glutenFreeProducts = createProductMap();
     @Override
     public Map<Product, Integer> getMapProductsInDepot() {
         return glutenFreeProducts;

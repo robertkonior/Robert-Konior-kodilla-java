@@ -7,11 +7,20 @@ import java.util.Map;
 public class HealthyShop implements OrderingProcessInterface,DepotStatusInterface,InformationInterface {
 
 
-    private Map<Product, Integer> healthFoodProducts = new HashMap<>();
+    private Map<Product, Integer> createProductMap(){
+        Map<Product, Integer> healthFoodProducts = new HashMap<>();
+        healthFoodProducts.put(new Product("cafe",BigDecimal.valueOf(10.0),'A'),5);
+        healthFoodProducts.put(new Product("tea",BigDecimal.valueOf(15.0),'A'),5);
+        healthFoodProducts.put(new Product("yogurt",BigDecimal.valueOf(10.0),'B'),5);
 
-    public void addHealtyroductToDepot(String name, BigDecimal price, char ecoClassOfProduct, Integer quantity) {
-        healthFoodProducts.put(new Product(name, price, ecoClassOfProduct), quantity);
+        return healthFoodProducts;
+
     }
+
+    private Map<Product, Integer> healthFoodProducts  = createProductMap();
+
+
+
     @Override
     public Map<Product, Integer> getMapProductsInDepot() {
         return healthFoodProducts;

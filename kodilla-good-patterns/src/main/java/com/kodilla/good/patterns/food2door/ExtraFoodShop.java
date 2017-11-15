@@ -7,14 +7,23 @@ import java.util.Map;
 public class ExtraFoodShop implements OrderingProcessInterface,DepotStatusInterface,InformationInterface {
 
 
-    private Map<Product, Integer> extraFoodProducts = new HashMap<>();
 
-    public void addExtraProductToDepot(String name, BigDecimal price, Integer quantity) {
-        extraFoodProducts.put(new Product(name, price), quantity);
+
+    private Map<Product, Integer> createProductMap(){
+         Map<Product, Integer> extraFoodProducts = new HashMap<>();
+        extraFoodProducts.put(new Product("goi",BigDecimal.valueOf(10.0)),5);
+        extraFoodProducts.put(new Product("acai",BigDecimal.valueOf(15.0)),5);
+        extraFoodProducts.put(new Product("chia",BigDecimal.valueOf(5.0)),5);
+
+        return extraFoodProducts;
+
     }
+
+    private Map<Product, Integer> extraFoodProducts = createProductMap();
+
     @Override
     public Map<Product, Integer> getMapProductsInDepot() {
-        return extraFoodProducts;
+        return createProductMap();
     }
 
     @Override
@@ -30,7 +39,7 @@ public class ExtraFoodShop implements OrderingProcessInterface,DepotStatusInterf
     }
     @Override
     public  String sendOrder(Product product , Integer quantity){
-        return getClass().getName() + product.toString()+ quantity;
+        return "buy : "  + getClass().getName() + product.toString()+ quantity;
     }
 
 }
