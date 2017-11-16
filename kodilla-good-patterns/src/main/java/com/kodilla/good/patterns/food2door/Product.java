@@ -4,44 +4,21 @@ import java.math.BigDecimal;
 
 public class Product {
 
-    private String productName;
-    private BigDecimal productPrice;
-    private boolean glutenFree ;
-    private char ecoClassOfProduct;
+    private String name;
+    BigDecimal price ;
 
-    public Product(String productName, BigDecimal productPrice) {
-        this.productName = productName;
-        this.productPrice = productPrice;
+    public Product(String name, BigDecimal price) {
+        this.name = name;
+        this.price = price;
     }
 
-    public Product(String productName, BigDecimal productPrice, boolean glutenFree) {
-        this.productName = productName;
-        this.productPrice = productPrice;
-        this.glutenFree = glutenFree;
+    public String getName() {
+        return name;
     }
 
-    public Product(String productName, BigDecimal productPrice, char ecoClassOfProduct) {
-        this.productName = productName;
-        this.productPrice = productPrice;
-        this.ecoClassOfProduct = ecoClassOfProduct;
+    public BigDecimal getPrice() {
+        return price;
     }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public BigDecimal getProductPrice() {
-        return productPrice;
-    }
-
-    public boolean isGlutenFree() {
-        return glutenFree;
-    }
-
-    public char getEcoClassOfProduct() {
-        return ecoClassOfProduct;
-    }
-
 
     @Override
     public boolean equals(Object o) {
@@ -50,24 +27,23 @@ public class Product {
 
         Product product = (Product) o;
 
-        if (productName != null ? !productName.equals(product.productName) : product.productName != null) return false;
-        return productPrice != null ? productPrice.equals(product.productPrice) : product.productPrice == null;
+        if (!name.equals(product.name)) return false;
+        return price.equals(product.price);
     }
 
     @Override
     public int hashCode() {
-        int result = productName != null ? productName.hashCode() : 0;
-        result = 31 * result + (productPrice != null ? productPrice.hashCode() : 0);
+        int result = name.hashCode();
+        result = 31 * result + price.hashCode();
         return result;
     }
 
     @Override
     public String toString() {
         return "Product{" +
-                "productName='" + productName + '\'' +
-                ", productPrice=" + productPrice +
-                ", glutenFree=" + glutenFree +
-                ", ecoClassOfProduct=" + ecoClassOfProduct +
+                "name='" + name + '\'' +
+                ", price=" + price +
                 '}';
     }
+
 }

@@ -4,23 +4,20 @@ import java.util.Map;
 
 public class OrderProcessor {
 
-    DepotStatusInterface depotStatusInterface;
-    OrderingProcessInterface orderingProcessInterface;
-    InformationInterface informationInterface;
+    Shop shop ;
+    OrderValidator orderValidator;
 
-    public OrderProcessor(final DepotStatusInterface depotStatusInterface, final OrderingProcessInterface orderingProcessInterface,final InformationInterface informationInterface) {
-        this.depotStatusInterface = depotStatusInterface;
-        this.orderingProcessInterface = orderingProcessInterface;
-        this.informationInterface = informationInterface;
+    public OrderProcessor(Shop shop, OrderValidator orderValidator) {
+        this.shop = shop;
+        this.orderValidator = orderValidator;
     }
 
-    public void executeTheOrderProcess(Product product, Integer quantity){
+    public void orderExecutor(OrderRequest orderRequest){
 
-        if(depotStatusInterface.getMapProductsInDepot().containsKey(product)){
-           if( orderingProcessInterface.process(product,quantity)){
-            informationInterface.sendOrder(product,quantity);}
-        }else {
-            System.out.println("We don't have this product");
+        if(orderValidator.getValidOrder(orderRequest)){
+            Map<Product, Integer> products =  shop.getMapProduct() ;
+            shop.process(orderRequest, products);
+            System.out.println("Now shop stored" + products);
         }
     }
 
