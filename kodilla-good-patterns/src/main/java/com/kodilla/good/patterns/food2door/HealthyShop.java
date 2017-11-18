@@ -7,6 +7,7 @@ import java.util.Map;
 public class HealthyShop implements Shop, OrderValidator {
 
     private Map<Product, Integer> products = new HashMap<>();
+    InformationService informationService = new EmailService();
 
     public HealthyShop() {
         products.put(new Product("apple", BigDecimal.ONE), 5);
@@ -20,6 +21,7 @@ public class HealthyShop implements Shop, OrderValidator {
         if (result) {
             updateStore(product, quantity);
             System.out.println("Now left : " + products.get(product) + " " + product.getName() + " in shop");
+            informationService.sendMessageToBuyer(product.getName());
         }
         return result;
 

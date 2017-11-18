@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class GlutenFreeShop implements Shop, OrderValidator {
     private Map<Product, Integer> products = new HashMap<>();
+    InformationService informationService = new EmailService();
 
     public GlutenFreeShop() {
         products.put(new Product("Bread", BigDecimal.ONE), 5);
@@ -21,6 +22,7 @@ public class GlutenFreeShop implements Shop, OrderValidator {
         if (result) {
             updateStore(product, quantity);
             System.out.println("Now left : " + products.get(product) + " " + product.getName() + " in shop");
+            informationService.sendMessageToBuyer(product.getName());
         }
         return result;
 
