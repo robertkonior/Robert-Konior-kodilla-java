@@ -2,9 +2,9 @@ package com.kodilla.good.patterns.food2door;
 
 import java.util.Map;
 
-public interface OrderValidator {
+public class OrderValidator {
 
-    default boolean orderValidate(Map<Product, Integer> products,Product product, int quantity) {
+    public boolean orderValidate(Map<Product, Integer> products,Product product, int quantity) {
         if(products.containsKey(product)) {
            int quantityInShop = products.get(product);
             if (quantityInShop >= quantity) {

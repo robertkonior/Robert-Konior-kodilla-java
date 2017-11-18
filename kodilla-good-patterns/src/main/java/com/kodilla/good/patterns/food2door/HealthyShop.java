@@ -4,10 +4,14 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HealthyShop implements Shop, OrderValidator {
+public class HealthyShop implements Shop {
 
+    OrderValidator orderValidator;
     private Map<Product, Integer> products = new HashMap<>();
-    InformationService informationService = new EmailService();
+
+    public HealthyShop(OrderValidator orderValidator) {
+        this.orderValidator = orderValidator;
+    }
 
     public HealthyShop() {
         products.put(new Product("apple", BigDecimal.ONE), 5);
@@ -17,11 +21,10 @@ public class HealthyShop implements Shop, OrderValidator {
 
     @Override
     public boolean process(Product product, int quantity) {
-        boolean result = orderValidate(products, product, quantity);
+        boolean result = orderValidator.orderValidate(products,product, quantity);
         if (result) {
             updateStore(product, quantity);
             System.out.println("Now left : " + products.get(product) + " " + product.getName() + " in shop");
-            informationService.sendMessageToBuyer(product.getName());
         }
         return result;
 

@@ -4,9 +4,13 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GlutenFreeShop implements Shop, OrderValidator {
+public class GlutenFreeShop implements Shop {
     private Map<Product, Integer> products = new HashMap<>();
-    InformationService informationService = new EmailService();
+    OrderValidator orderValidator;
+
+    public GlutenFreeShop(OrderValidator orderValidator) {
+        this.orderValidator = orderValidator;
+    }
 
     public GlutenFreeShop() {
         products.put(new Product("Bread", BigDecimal.ONE), 5);
@@ -17,12 +21,10 @@ public class GlutenFreeShop implements Shop, OrderValidator {
 
     @Override
     public boolean process(Product product, int quantity) {
-        int quantityInShop = products.get(product);
-        boolean result = orderValidate(products,product, quantity);
+        boolean result = orderValidator.orderValidate(products,product, quantity);
         if (result) {
             updateStore(product, quantity);
             System.out.println("Now left : " + products.get(product) + " " + product.getName() + " in shop");
-            informationService.sendMessageToBuyer(product.getName());
         }
         return result;
 
