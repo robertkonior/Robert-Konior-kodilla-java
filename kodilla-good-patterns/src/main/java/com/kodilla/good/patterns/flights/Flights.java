@@ -1,32 +1,24 @@
 package com.kodilla.good.patterns.flights;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Flights {
 
-    public void addFlight(Airport airport,Airport airport2) {
-        airport.addDepartures(airport2);
-        airport2.addArrivals(airport);
+    String departureAirport;
+    String arrivalAirport;
+
+    public Flights(String departureAirport, String arrivalAirport) {
+        this.departureAirport = departureAirport;
+        this.arrivalAirport = arrivalAirport;
     }
 
-    public static Map<Airport,List<Airport>> getArrivals(Airport airport) {
-        Map<Airport, List<Airport>> arrivalsMap = new HashMap<>();
-        arrivalsMap.put(airport, airport.getArrivals());
-        return arrivalsMap;
+    public void addFlight(String departureAirport, String arrivalAirport) {
+        Set<Flights> flights = new HashSet<>();
+
+
     }
 
-    public static Map<Airport,List<Airport>> getDepartures(Airport airport) {
-        Map<Airport,List<Airport>> departuresMap = new HashMap<>();
-        departuresMap.put(airport,airport.getDepartures());
-        return departuresMap;
-    }
 
-    public static Map<List<Airport>, List<Airport>> getAllFlights(Airport airport){
-        Map<List<Airport>, List<Airport>> allFlightsMap = new HashMap<>();
-        allFlightsMap.put(airport.getArrivals(),airport.getDepartures());
-        return allFlightsMap;
-    }
 
 }
