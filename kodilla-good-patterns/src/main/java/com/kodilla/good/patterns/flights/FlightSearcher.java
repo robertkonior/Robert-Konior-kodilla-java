@@ -1,9 +1,6 @@
 package com.kodilla.good.patterns.flights;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FlightSearcher {
 
@@ -13,13 +10,14 @@ public class FlightSearcher {
         this.flights = flights;
     }
 
-    private static Map<Airport,List<Airport>> getArrivals(Airport airport) {
-        Map<Airport, List<Airport>> arrivalsMap = new HashMap<>();
+    private static Map<String,HashSet<String> getArrivals(String airport,HashSet<Flights> flights) {
+        if(flights.contains(getArrivals())=airport)
+        Map<String, HashSet<String>> arrivalsMap = new HashMap<>();
         arrivalsMap.put(airport, airport.getArrivals());
         return arrivalsMap;
     }
 
-    private static Map<Airport,List<Airport>> getDepartures(Airport airport) {
+    private static Map<Airport,List<Airport>> getDepartures(String airport) {
         Map<Airport,List<Airport>> departuresMap = new HashMap<>();
         departuresMap.put(airport,airport.getDepartures());
         return departuresMap;
