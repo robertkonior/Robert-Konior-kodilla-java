@@ -71,8 +71,13 @@ public class FlightSearcher {
 
     public void searchFlightFromAirportToAirport(String departureAirports ,String arrivalAirports){
 
-        List<String> connectedAirportsFrom =searchDeparturesFromAirport(departureAirports).stream()
-                .filter(f -> !f.equals(d))
+        Set<String> connectedAirportsFrom =searchDeparturesFromAirport(departureAirports).stream()
+                .map(f -> f.getArrivalAirport())
+                .collect(Collectors.toSet());
+
+        Set<Flights> flightsVia = searchArrivalsFromAirport(arrivalAirports).stream()
+                .filter(f -> connectedAirportsFrom.contains(f.getDepartureAirport()))
+                .collect(Collectors.toSet());
 
 
 
