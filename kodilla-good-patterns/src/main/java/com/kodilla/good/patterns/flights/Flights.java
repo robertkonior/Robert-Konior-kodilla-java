@@ -7,7 +7,7 @@ public class Flights {
 
     String departureAirport;
     String arrivalAirport;
-    private Set<Flights> flights = new HashSet<>();
+    private HashSet<Flights> flights = new HashSet<>();
 
     public Flights(String departureAirport, String arrivalAirport) {
         this.departureAirport = departureAirport;
@@ -18,8 +18,8 @@ public class Flights {
         flights.add(new Flights(departureAirport,arrivalAirport));
     }
 
-    public Set<Flights> getFlightsList(){
-        return flights;
+    public  HashSet<Flights> getFlightsList(){
+        return  flights;
     }
 
     public String getDepartureAirport() {
