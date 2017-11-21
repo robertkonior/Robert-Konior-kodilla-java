@@ -1,38 +1,62 @@
 package com.kodilla.good.patterns.flights;
 
-import org.junit.Test;
+import org.junit.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class FlightTestSuite {
 
 
+    public HashSet<Flight> getFlightList() {
+
+        HashSet<Flight> flightsList = new HashSet<>();
+        flightsList.add(new Flight("warsaw", "berlin"));
+        flightsList.add(new Flight("miami", "oslo"));
+        flightsList.add(new Flight("krakow", "warsaw"));
+        flightsList.add(new Flight("newYork", "krakow"));
+        flightsList.add(new Flight("rome", "warsaw"));
+        flightsList.add(new Flight("warsaw", "newYork"));
+
+
+        return flightsList;
+    }
+
     @Test
-    public void testFlightSearcher(){
+    public void testSearchDeparturesFromAirport() {
 
+        //Given
+        HashSet<Flight> flightsList = getFlightList();
+        //When
+        Flights flights = new Flights(flightsList);
+        FlightSearcher flightSearcher = new FlightSearcher(flights);
+        Set<Flight> testedFlightsSet = flightSearcher.searchDeparturesFromAirport("miami");
+        //Then
+        Assert.assertEquals(2, testedFlightsSet.size());
+    }
 
-        Airport warsaw = new Airport("WAW");
-        Airport berlin = new Airport("TLX");
-        Airport rome = new Airport("ROM");
-        Airport oslo = new Airport("OSL");
-        Airport miami = new Airport("MAM");
-        Airport newYork = new Airport("NYK");
-        Airport krakow = new Airport("KRK");
+    @Test
+    public void testSearchArrivalsToAirport(){
+        //Given
+        HashSet<Flight> flightsList = getFlightList();
+        //When
+        Flights flights = new Flights(flightsList);
+        FlightSearcher flightSearcher = new FlightSearcher(flights);
+        Set<Flight> testedFlightsSet = flightSearcher.searchArrivalsToAirport("warsaw");
+        //Then
+        Assert.assertEquals(2, testedFlightsSet.size());
+    }
 
-        Flights flights = new Flights();
-
-        flights.addFlight(warsaw,berlin);
-        flights.addFlight(miami,oslo);
-        flights.addFlight(krakow,warsaw);
-        flights.addFlight(newYork,krakow);
-        flights.addFlight(rome,warsaw);
-        flights.addFlight(miami,newYork);
-
-        FlightSearcher flightSearcher = new FlightSearcher();
-
-        flightSearcher.searchDeparturesFromAirport(miami);
-
-        flightSearcher.searchArrivalsFromAirport(warsaw);
-
-        flightSearcher.searchFlightFromToByTrough(krakow,berlin,warsaw);
+    @Test
+    public void testSearchFlightFromAirportToAirport(){
+        //Given
+        HashSet<Flight> flightsList = getFlightList();
+        //When
+        Flights flights = new Flights(flightsList);
+        FlightSearcher flightSearcher = new FlightSearcher(flights);
+        Set<Flight> testedFlightsSet = flightSearcher.searchFlightFromAirportToAirport("rome","newYork");
+        //Then
+        Assert.assertEquals(1, testedFlightsSet.size());
     }
 
 }
