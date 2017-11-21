@@ -5,12 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GlutenFreeShop implements Shop {
-    private Map<Product, Integer> products = new HashMap<>();
-    OrderValidator orderValidator;
 
-    public GlutenFreeShop(OrderValidator orderValidator) {
-        this.orderValidator = orderValidator;
-    }
+    private Map<Product, Integer> products = new HashMap<>();
+    private OrderValidator orderValidator;
 
     public GlutenFreeShop() {
         products.put(new Product("Bread", BigDecimal.ONE), 5);
@@ -28,6 +25,11 @@ public class GlutenFreeShop implements Shop {
         }
         return result;
 
+    }
+
+    @Override
+    public String getName() {
+        return "Gluten Free Shop";
     }
 
     private void updateStore(Product product, int quantity) {

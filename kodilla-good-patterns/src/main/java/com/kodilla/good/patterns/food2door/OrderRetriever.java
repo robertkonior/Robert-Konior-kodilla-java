@@ -7,8 +7,8 @@ import java.util.List;
 public class OrderRetriever {
     public List<OrderRequest> retrieve() {
         List<OrderRequest> requests = new LinkedList<>();
-        HealthyShop healthy = new HealthyShop(new OrderValidator());
-        GlutenFreeShop glutenFree = new GlutenFreeShop(new OrderValidator());
+        HealthyShop healthy = new HealthyShop();
+        GlutenFreeShop glutenFree = new GlutenFreeShop();
 
         requests.add(new OrderRequest(healthy, new  Product("apple", BigDecimal.ONE), 1));
         requests.add(new OrderRequest(healthy, new Product("garlic", BigDecimal.TEN), 1));

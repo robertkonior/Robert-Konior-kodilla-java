@@ -6,12 +6,8 @@ import java.util.Map;
 
 public class HealthyShop implements Shop {
 
-    OrderValidator orderValidator;
+    private OrderValidator orderValidator;
     private Map<Product, Integer> products = new HashMap<>();
-
-    public HealthyShop(OrderValidator orderValidator) {
-        this.orderValidator = orderValidator;
-    }
 
     public HealthyShop() {
         products.put(new Product("apple", BigDecimal.ONE), 5);
@@ -28,6 +24,11 @@ public class HealthyShop implements Shop {
         }
         return result;
 
+    }
+
+    @Override
+    public String getName() {
+        return "Healthy Shop";
     }
 
     private void updateStore(Product product, int quantity) {

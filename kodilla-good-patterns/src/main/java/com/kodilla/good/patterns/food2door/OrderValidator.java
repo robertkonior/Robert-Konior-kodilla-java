@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class OrderValidator {
 
-    public boolean orderValidate(Map<Product, Integer> products,Product product, int quantity) {
+    public static boolean orderValidate(Map<Product, Integer> products,Product product, int quantity) {
         if(products.containsKey(product)) {
            int quantityInShop = products.get(product);
             if (quantityInShop >= quantity) {

@@ -6,12 +6,7 @@ import java.util.Map;
 
 public class ExtraFoodShop implements Shop {
 
-    OrderValidator orderValidator;
-
-    public ExtraFoodShop(OrderValidator orderValidator) {
-        this.orderValidator = orderValidator;
-    }
-
+    private OrderValidator orderValidator;
     private Map<Product, Integer> products = new HashMap<>();
 
     public ExtraFoodShop() {
@@ -31,6 +26,13 @@ public class ExtraFoodShop implements Shop {
         return result;
 
     }
+
+    @Override
+    public String getName() {
+        return "Extra Food Shop";
+    }
+
+
 
     private void updateStore(Product product, int quantity) {
         this.products.put(product, products.get(product) - quantity);
