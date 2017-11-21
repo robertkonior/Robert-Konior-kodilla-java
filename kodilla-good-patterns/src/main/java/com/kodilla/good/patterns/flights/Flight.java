@@ -1,8 +1,8 @@
 package com.kodilla.good.patterns.flights;
 
 public class Flight {
-    String departureAirport;
-    String arrivalAirport;
+    private String departureAirport;
+    private String arrivalAirport;
 
     public Flight(String departureAirport, String arrivalAirport) {
         this.departureAirport = departureAirport;
@@ -23,5 +23,24 @@ public class Flight {
                 "departureAirport='" + departureAirport + '\'' +
                 ", arrivalAirport='" + arrivalAirport + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Flight)) return false;
+
+        Flight flight = (Flight) o;
+
+        if (departureAirport != null ? !departureAirport.equals(flight.departureAirport) : flight.departureAirport != null)
+            return false;
+        return arrivalAirport != null ? arrivalAirport.equals(flight.arrivalAirport) : flight.arrivalAirport == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = departureAirport != null ? departureAirport.hashCode() : 0;
+        result = 31 * result + (arrivalAirport != null ? arrivalAirport.hashCode() : 0);
+        return result;
     }
 }

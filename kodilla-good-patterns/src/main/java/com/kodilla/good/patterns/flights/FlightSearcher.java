@@ -5,42 +5,40 @@ import java.util.stream.Collectors;
 
 public class FlightSearcher {
 
-    Flights flight;
+    Flights flights;
 
-    public FlightSearcher(Flights flight) {
-        this.flight = flight;
+    public FlightSearcher(Flights flights) {
+        this.flights = flights;
     }
 
     public Set<Flight> searchDeparturesFromAirport(String airport){
 
-        Set<Flight> departureAirports =flight.getFlightsList().stream()
+        Set<Flight> departureAirports = flights.getFlightsList().stream()
                 .filter(departure -> departure.getDepartureAirport().equals(airport))
                 .collect(Collectors.toSet());
 
-        if (departureAirports.equals(null)) {
+        if (departureAirports == null) {
             System.out.println("No results found!");
-            return null;
         } else {
             System.out.println("Flights from: " +airport);
             departureAirports.forEach(System.out::println);
-            return departureAirports;
         }
+        return departureAirports;
     }
 
     public Set<Flight> searchArrivalsToAirport(String airport){
 
-       Set<Flight> arrivalAirports = flight.getFlightsList().stream()
+       Set<Flight> arrivalAirports = flights.getFlightsList().stream()
                .filter(arrival -> arrival.getArrivalAirport().equals(airport))
                .collect(Collectors.toSet());
 
-        if (arrivalAirports.equals(null)) {
+        if (arrivalAirports == null) {
             System.out.println("No results found!");
-            return null;
         } else {
-            System.out.println("Flights to " +airport);
+            System.out.println("Flights to: " +airport);
             arrivalAirports.forEach(System.out::println);
-            return arrivalAirports;
         }
+        return arrivalAirports;
     }
 
     public Set<Flight> searchFlightFromAirportToAirport(String departureAirports ,String arrivalAirports){

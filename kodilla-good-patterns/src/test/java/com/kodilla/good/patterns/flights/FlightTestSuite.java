@@ -32,7 +32,7 @@ public class FlightTestSuite {
         FlightSearcher flightSearcher = new FlightSearcher(flights);
         Set<Flight> testedFlightsSet = flightSearcher.searchDeparturesFromAirport("miami");
         //Then
-        Assert.assertEquals(2, testedFlightsSet.size());
+        Assert.assertEquals(1, testedFlightsSet.size());
     }
 
     @Test
