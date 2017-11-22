@@ -3,6 +3,7 @@ package com.kodilla.good.patterns.flights;
 import org.junit.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class FlightTestSuite {
@@ -61,7 +62,7 @@ public class FlightTestSuite {
         //When
         Flights flights = new Flights(flightsList);
         FlightSearcher flightSearcher = new FlightSearcher(flights);
-        Set<Flight> testedFlightsSet = flightSearcher.searchFlightFromAirportToAirport("rome","newYork");
+        Set<List<Flight>> testedFlightsSet = flightSearcher.searchFlightFromAirportToAirport("rome","newYork");
         //Then
         Assert.assertEquals(2, testedFlightsSet.size());
     }

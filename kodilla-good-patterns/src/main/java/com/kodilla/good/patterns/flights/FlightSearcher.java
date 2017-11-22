@@ -41,25 +41,27 @@ public class FlightSearcher {
         return arrivalAirports;
     }
 
-    public Set<Flight> searchFlightFromAirportToAirport(String departureAirports ,String arrivalAirports){
-
-//        Map<Flight,Flight> flightMap = new HashMap<>();
-//
-//        Set<String> connectedAirportsFrom =searchDeparturesFromAirport(departureAirports).stream()
-//                .map(f -> f.getArrivalAirport())
-//                .collect(Collectors.toSet());
-//
-//        Set<Flight> flightsVia = searchArrivalsToAirport(arrivalAirports).stream()
-//                .filter(f -> connectedAirportsFrom.contains(f.getDepartureAirport()))
-//                .collect(Collectors.toSet());
-//
-//        return flightsVia;
-
+    public Set<List<Flight>> searchFlightFromAirportToAirport(String departureAirports, String arrivalAirports) {
         Set<Flight> firstFlight = searchDeparturesFromAirport(departureAirports);
-        Set<Flight> secondflight = searchArrivalsToAirport(arrivalAirports);
+        Set<Flight> secondFlight = searchArrivalsToAirport(arrivalAirports);
 
-        Set<List<Flight>> flightMap = firstFlight.stream().filter(f-> f.getArrivalAirport().equals(secondflight.contains(f.getDepartureAirport())))
-                .collect(Collectors.toCollection(Set<List<Flight>>));
+        return firstFlight.stream().collect(
+                HashSet<List<Flight>>::new,
+                (flightConnections, departureFlight) -> flightConnections.add(getConnection(departureFlight, secondFlight)),
+                AbstractCollection::addAll
+        );
+    }
 
+    private List<Flight> getConnection(Flight departureFlight, Set<Flight> secondFlight) {
+        return secondFlight.stream()
+                .filter(arrivalFlight -> departureFlight.getArrivalAirport().equals(arrivalFlight.getDepartureAirport()))
+                .collect(
+                        LinkedList::new,
+                        (flightConnection, arrivalFlight) -> {
+                            flightConnection.add(departureFlight);
+                            flightConnection.add(arrivalFlight);
+                        },
+                        AbstractCollection::addAll
+                );
     }
 }
