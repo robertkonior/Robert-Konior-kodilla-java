@@ -17,6 +17,8 @@ public class FlightTestSuite {
         flightsList.add(new Flight("newYork", "krakow"));
         flightsList.add(new Flight("rome", "warsaw"));
         flightsList.add(new Flight("warsaw", "newYork"));
+        flightsList.add(new Flight("rome", "paris"));
+        flightsList.add(new Flight("paris", "newYork"));
 
 
         return flightsList;
@@ -27,24 +29,29 @@ public class FlightTestSuite {
 
         //Given
         HashSet<Flight> flightsList = getFlightList();
+        HashSet<Flight> expectedFlights = new HashSet<>();
+        expectedFlights.add(new Flight("miami", "oslo"));
         //When
         Flights flights = new Flights(flightsList);
         FlightSearcher flightSearcher = new FlightSearcher(flights);
         Set<Flight> testedFlightsSet = flightSearcher.searchDeparturesFromAirport("miami");
         //Then
-        Assert.assertEquals(1, testedFlightsSet.size());
+        Assert.assertEquals(expectedFlights, testedFlightsSet);
     }
 
     @Test
     public void testSearchArrivalsToAirport(){
         //Given
         HashSet<Flight> flightsList = getFlightList();
+        HashSet<Flight> expectedFlights = new HashSet<>();
+        expectedFlights.add(new Flight("krakow", "warsaw"));
+        expectedFlights.add(new Flight("rome", "warsaw"));
         //When
         Flights flights = new Flights(flightsList);
         FlightSearcher flightSearcher = new FlightSearcher(flights);
         Set<Flight> testedFlightsSet = flightSearcher.searchArrivalsToAirport("warsaw");
         //Then
-        Assert.assertEquals(2, testedFlightsSet.size());
+        Assert.assertEquals(expectedFlights, testedFlightsSet);
     }
 
     @Test
@@ -56,7 +63,7 @@ public class FlightTestSuite {
         FlightSearcher flightSearcher = new FlightSearcher(flights);
         Set<Flight> testedFlightsSet = flightSearcher.searchFlightFromAirportToAirport("rome","newYork");
         //Then
-        Assert.assertEquals(1, testedFlightsSet.size());
+        Assert.assertEquals(2, testedFlightsSet.size());
     }
 
 }

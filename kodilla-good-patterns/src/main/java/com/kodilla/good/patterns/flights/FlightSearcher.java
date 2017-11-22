@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class FlightSearcher {
 
-    Flights flights;
+    private Flights flights;
 
     public FlightSearcher(Flights flights) {
         this.flights = flights;
@@ -43,15 +43,23 @@ public class FlightSearcher {
 
     public Set<Flight> searchFlightFromAirportToAirport(String departureAirports ,String arrivalAirports){
 
-        Set<String> connectedAirportsFrom =searchDeparturesFromAirport(departureAirports).stream()
-                .map(f -> f.getArrivalAirport())
-                .collect(Collectors.toSet());
+//        Map<Flight,Flight> flightMap = new HashMap<>();
+//
+//        Set<String> connectedAirportsFrom =searchDeparturesFromAirport(departureAirports).stream()
+//                .map(f -> f.getArrivalAirport())
+//                .collect(Collectors.toSet());
+//
+//        Set<Flight> flightsVia = searchArrivalsToAirport(arrivalAirports).stream()
+//                .filter(f -> connectedAirportsFrom.contains(f.getDepartureAirport()))
+//                .collect(Collectors.toSet());
+//
+//        return flightsVia;
 
-        Set<Flight> flightsVia = searchArrivalsToAirport(arrivalAirports).stream()
-                .filter(f -> connectedAirportsFrom.contains(f.getDepartureAirport()))
-                .collect(Collectors.toSet());
+        Set<Flight> firstFlight = searchDeparturesFromAirport(departureAirports);
+        Set<Flight> secondflight = searchArrivalsToAirport(arrivalAirports);
 
-        return flightsVia;
+        Set<List<Flight>> flightMap = firstFlight.stream().filter(f-> f.getArrivalAirport().equals(secondflight.contains(f.getDepartureAirport())))
+                .collect(Collectors.toCollection(Set<List<Flight>>));
 
     }
 }
