@@ -3,6 +3,7 @@ package com.kodilla.good.patterns.flights;
 import org.junit.*;
 
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -59,12 +60,21 @@ public class FlightTestSuite {
     public void testSearchFlightFromAirportToAirport(){
         //Given
         HashSet<Flight> flightsList = getFlightList();
+        List<Flight> firstConnectedFlight = new LinkedList<>();
+        firstConnectedFlight.add(new Flight("rome","paris"));
+        firstConnectedFlight.add(new Flight("paris","newYork"));
+        List<Flight> secondConnectedFlight = new LinkedList<>();
+        secondConnectedFlight.add(new Flight("rome","warsaw"));
+        secondConnectedFlight.add(new Flight("warsaw","newYork"));
+        Set<List<Flight>> expectedFlights = new HashSet<>();
+        expectedFlights.add(firstConnectedFlight);
+        expectedFlights.add(secondConnectedFlight);
         //When
         Flights flights = new Flights(flightsList);
         FlightSearcher flightSearcher = new FlightSearcher(flights);
         Set<List<Flight>> testedFlightsSet = flightSearcher.searchFlightFromAirportToAirport("rome","newYork");
         //Then
-        Assert.assertEquals(2, testedFlightsSet.size());
+        Assert.assertEquals(expectedFlights, testedFlightsSet);
     }
 
 }
