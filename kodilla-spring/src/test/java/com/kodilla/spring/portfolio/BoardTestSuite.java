@@ -14,15 +14,15 @@ public class BoardTestSuite {
         Board board = context.getBean(Board.class);
 
         board.getToDoList().addTask("task");
-        board.getInProgressList().addTask("task");
-        board.getDoneList().addTask("task");
+        board.getInProgressList().addTask("abc");
+        board.getDoneList().addTask("done");
         //When
-        int toDoListSize = board.getToDoList().getTasks().size();
-        int InProgressListSize = board.getInProgressList().getTasks().size();
-        int doneListSize = board.getDoneList().getTasks().size();
+        String toDoListTest = board.getToDoList().getTasks().get(0);
+        String InProgressListTest = board.getInProgressList().getTasks().get(0);
+        String doneListTest = board.getDoneList().getTasks().get(0);
         //Then
-        Assert.assertEquals(1,toDoListSize);
-        Assert.assertEquals(1,InProgressListSize);
-        Assert.assertEquals(1,doneListSize);
+        Assert.assertEquals("task",toDoListTest);
+        Assert.assertEquals("abc",InProgressListTest);
+        Assert.assertEquals("done",doneListTest);
     }
 }

@@ -21,7 +21,8 @@ public class BoardConfig {
         return new TaskList();
     }
 
-    @Bean TaskList doneList() {
+    @Bean
+    public TaskList doneList() {
         return new TaskList();
     }
 
