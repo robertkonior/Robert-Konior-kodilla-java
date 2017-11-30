@@ -4,10 +4,10 @@ import java.util.List;
 
 public class Bigmac {
 
-    private final Roll roll;
-    private final int burgers;
-    private final Sauce sauce;
-    private final List<String> ingredients;
+//    private final Roll roll;
+//    private final int burgers;
+//    private final Sauce sauce;
+//    private final List<String> ingredients;
 
     public static class BigMacBuilder {
         private Roll roll;

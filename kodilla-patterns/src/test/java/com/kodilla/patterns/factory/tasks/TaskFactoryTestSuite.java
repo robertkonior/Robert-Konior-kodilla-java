@@ -61,12 +61,11 @@ public class TaskFactoryTestSuite {
     }
 
     @Test
-    public void testExecutingPaintingTask(){
+    public void testCreatingNoExistingTask(){
         //Given -@before
         //When
-        Task paintingTask = taskFactory.makeTask(TaskFactory.PAINTINGTASK);
-        paintingTask.executeTask();
+        Task paintingTask = taskFactory.makeTask("super task");
         //Then
-        Assert.assertTrue(paintingTask.isTaskExecuted());
+        Assert.assertNull(paintingTask);
     }
 }
