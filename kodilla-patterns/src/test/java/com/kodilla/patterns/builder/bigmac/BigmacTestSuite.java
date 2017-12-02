@@ -37,9 +37,9 @@ public class BigmacTestSuite {
 
     }
 
-    @Test
-    public void testCreatingBadMac() throws  Exception {
-
+    @Test(expected = IllegalStateException.class)
+    public void testCreatingBadBurger() throws Exception {
+        //Given
         Sauce badSauce = new Sauce("garlic");
         Roll sezam = new Roll("SEZAM");
 
@@ -49,10 +49,10 @@ public class BigmacTestSuite {
                 .sauce(badSauce)
                 .ingradients("LETTUCE")
                 .build();
-
-        Assert.assertEquals(new IllegalStateException("We don't have this ingredient ! "),createBurger());
-
+        //When
+        //Then
     }
+
 
 
 }
