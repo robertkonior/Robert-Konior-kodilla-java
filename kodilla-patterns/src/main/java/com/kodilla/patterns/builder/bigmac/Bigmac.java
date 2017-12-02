@@ -4,25 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class Bigmac {
 
-    private final String roll;
+    private final Roll roll;
     private final int burgers;
     private final Sauce sauce;
     private final List<String> ingredients;
 
 
-
     public static class BigMacBuilder {
-        private String roll;
+        private Roll roll;
         private int burgers;
         private Sauce sauce;
         private List<String> ingredients = new ArrayList<>();
-        private Ingredients checker;
 
-
-        public BigMacBuilder roll(String roll){
+        public BigMacBuilder roll(Roll roll){
             this.roll = roll;
             return this;
         }
@@ -38,7 +34,7 @@ public class Bigmac {
         }
 
         public BigMacBuilder ingradients(String ingredient){
-            if(checker.checkIngredient(ingredient)){
+            if(Ingredients.checkIngredient(ingredient)){
             ingredients.add(ingredient);
             }
             return this;
@@ -50,14 +46,14 @@ public class Bigmac {
 
     }
 
-    private Bigmac(final String roll, final int burgers, final Sauce sauce, List<String> ingredients) {
+    private Bigmac(final Roll roll, final int burgers, final Sauce sauce, List<String> ingredients) {
         this.roll = roll;
         this.burgers = burgers;
         this.sauce = sauce;
         this.ingredients = ingredients;
     }
 
-    public String getRoll() {
+    public Roll getRoll() {
         return roll;
     }
 

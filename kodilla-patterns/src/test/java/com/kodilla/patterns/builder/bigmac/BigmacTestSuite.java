@@ -13,9 +13,10 @@ public class BigmacTestSuite {
 
         //Given
         Sauce barbecueSauce = new Sauce("BARBECUE");
+        Roll sezam = new Roll("SEZAM");
 
         Bigmac bigmac = new Bigmac.BigMacBuilder()
-                .roll(Roll.NORMAL)
+                .roll(sezam)
                 .burgersQuantity(2)
                 .sauce(barbecueSauce)
                 .ingradients("LETTUCE")
@@ -31,6 +32,27 @@ public class BigmacTestSuite {
         List<String> testedList = bigmac.getIngredients();
         //Then
         Assert.assertEquals(expectedListIngradients,testedList);
+        Assert.assertEquals("SEZAM",bigmac.getRoll().getKind());
+        Assert.assertEquals("BARBECUE",bigmac.getSauce().getTaste());
 
     }
+
+    @Test
+    public void testCreatingBadMac() throws  Exception {
+
+        Sauce badSauce = new Sauce("garlic");
+        Roll sezam = new Roll("SEZAM");
+
+        Bigmac bigmac = new Bigmac.BigMacBuilder()
+                .roll(sezam)
+                .burgersQuantity(2)
+                .sauce(badSauce)
+                .ingradients("LETTUCE")
+                .build();
+
+        Assert.assertEquals(new IllegalStateException("We don't have this ingredient ! "),createBurger());
+
+    }
+
+
 }
