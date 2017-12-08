@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Transactional
 public class TaskListDaoTestSuite {
     @Autowired
     private TaskListDao taskListDao;
@@ -28,10 +30,10 @@ public class TaskListDaoTestSuite {
         List<TaskList> readTaskLists = taskListDao.findByListName(listName);
 
         //Then
-        Assert.assertEquals(2,readTaskLists.size());
+        Assert.assertEquals(1,readTaskLists.size());
 
         //CleanUp
         int id = readTaskLists.get(0).getId();
-        taskListDao.deleteAll();
+        taskListDao.delete(String.valueOf(id));
     }
 }
