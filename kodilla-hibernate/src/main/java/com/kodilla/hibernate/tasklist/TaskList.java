@@ -10,7 +10,7 @@ public final class TaskList {
     private int id;
     private String listName;
     private String description;
-//    private List<Task> tasks = new ArrayList<>();
+
 
     public TaskList(){}
 
@@ -36,10 +36,6 @@ public final class TaskList {
     public String getDescription() {
         return description;
     }
-
-//    public List<Task> getTasks() {
-//        return tasks;
-//    }
 
     private void setId(int id) {
         this.id = id;
