@@ -28,7 +28,7 @@ public class InvoiceDaoTestSuite {
         //Given
         Product cabel = new Product("Cabel");
         Product socket = new Product("Socket");
-        Product router = new Product("Router");
+
         Item firstItem = new Item(cabel, BigDecimal.TEN,2);
         Item secondItem = new Item(socket,BigDecimal.valueOf(30.0),1);
 
@@ -49,10 +49,11 @@ public class InvoiceDaoTestSuite {
         int itemsSize = invoice.getItems().size();
 
         Invoice invoiceFromDB = invoiceDao.findById(invId);
+        String productFromDB = invoiceFromDB.getItems().get(0).getProduct().getName();
         //Then
         try {
             Assert.assertEquals(invId,invoiceFromDB.getId());
-            Assert.assertEquals(2,itemsSize);
+            Assert.assertEquals("Cabel",productFromDB);
             Assert.assertEquals(itemsSize,invoiceFromDB.getItems().size());
         }finally {
             //CleanUp

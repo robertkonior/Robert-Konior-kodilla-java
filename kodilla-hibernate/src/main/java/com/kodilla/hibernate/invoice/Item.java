@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "ITEM")
+@Table(name = "ITEMS")
 public class Item {
     private int id;
     private Product product;
