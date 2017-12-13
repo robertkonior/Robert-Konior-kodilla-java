@@ -1,10 +1,16 @@
 package com.kodilla.hibernate.manytomany;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@Transactional
+@NamedQuery(
+        name = "Employee.retrievByLastName",
+        query = "FROM Employee WHERE Lastname = :LASTNAME"
+)
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
