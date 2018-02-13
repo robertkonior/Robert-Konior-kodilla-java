@@ -7,9 +7,9 @@ import java.util.List;
 
 @NamedNativeQuery(
         name = "Company.searchCompaniesByCharset",
-        query = "SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME, 1, 3) = :FIRSTTHREELETTERS",
-        resultClass = Company.class
-)
+        query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE CONCAT('%', :NAME , '%')")
+
+
 @Entity
 @Table(name = "COMPANIES")
 public class Company {

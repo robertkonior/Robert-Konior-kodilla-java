@@ -7,10 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
-@NamedQuery(
-        name = "Employee.retrievByLastName",
-        query = "FROM Employee WHERE Lastname = :LASTNAME"
-)
+@NamedQueries({
+        @NamedQuery(
+                name = "Employee.retrievByLastName",
+                query = "FROM Employee WHERE Lastname = :LASTNAME"),
+        @NamedQuery(name = "Employee.retrievByFragmentName",
+                query = "FROM Employee WHERE lastname LIKE CONCAT ('%', :NAMEFRAGMENT, '%')"
+        )
+
+})
+
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
