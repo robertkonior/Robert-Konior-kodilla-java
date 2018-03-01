@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 import static org.junit.Assert.assertEquals;
 
-public class StoredPostTestSuite {
+public class StoredProcTestSuite {
 
     @Test
     public void testUpdateVipLevels() throws SQLException {
