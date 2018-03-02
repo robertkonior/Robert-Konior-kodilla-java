@@ -15,7 +15,7 @@ public class FacebookTestingApp {
 
     public static void main(String[] args) {
 
-        WebDriver driver = WebDriverConfig.getDriver(WebDriverConfig.FIREFOX);
+        WebDriver driver = WebDriverConfig.getDriver(WebDriverConfig.CHROME);
         driver.get("https://www.facebook.com/");
 
         WebElement selectComboDay = driver.findElement(By.xpath(XPATH_DAY));
