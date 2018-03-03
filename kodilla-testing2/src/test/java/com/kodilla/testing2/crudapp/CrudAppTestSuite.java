@@ -44,7 +44,7 @@ public class CrudAppTestSuite {
         final String XPATH_TASK_CONTENT = "//form[contains(@action,\"createTask\")]/fieldset[2]/textarea";
         final String XPATH_ADD_BUTTON = "//form[contains(@action,\"createTask\")]/fieldset[3]/button";
         String taskName = "Task number " + generator.nextInt(100000);
-        String taskContent = taskName + "content";
+        String taskContent = taskName + " content";
 
         WebElement name = driver.findElement(By.xpath(XPATH_TASK_NAME));
         name.sendKeys(taskName);
@@ -98,11 +98,10 @@ public class CrudAppTestSuite {
                         .size() > 0)
                 .forEach(aHref -> aHref.click());
 
+        Thread.sleep(2000);
+
         final WebDriverWait webDriverWait = new WebDriverWait(driverTrello, 10);
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span")));
-
-
-        Thread.sleep(2000);
 
         result = driverTrello.findElements(By.xpath("//span[@class=\"list-card-title js-card-name\"]")).stream()
                 .filter(theSpan -> theSpan.getText().contains(taskName))
@@ -117,19 +116,14 @@ public class CrudAppTestSuite {
     private void deleteTaskFromCrudApp(String taskName) throws InterruptedException {
         driver.switchTo().alert().accept();
 
-        final WebDriverWait webDriverWait = new WebDriverWait(driver, 10);
-        webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//select[1]")));
-        driver.findElements(By.xpath("//form[@class=\"datatable_row\"]")).stream()
+        driver.findElements(By.xpath("//form[@class=\"datatable__row\"]")).stream()
                 .filter(anyForm ->
-                        anyForm.findElement(By.xpath(".//p[@class=\"datatable__field-value\"]"))
-                                .getText().equals(taskName))
+                        anyForm.findElement(By.xpath(".//p[@class=\"datatable__field-value\"]")).getText().equals(taskName))
                 .forEach(theForm -> {
-                    WebElement deleteButton =
-                    theForm.findElement(By.xpath(".//button[@data-task-delete-button]"));
-                    deleteButton.click();
+                    theForm.findElements(By.xpath(".//button")).stream()
+                            .filter(theButton -> theButton.getText().contains("Delete"))
+                            .forEach(theButton -> theButton.click());
                 });
-        Thread.sleep(5000);
-
     }
 
     @After
